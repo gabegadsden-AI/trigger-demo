@@ -1,0 +1,18 @@
+# Environment variables — NEVER commit secrets
+.env
+.env.local
+.env.*.local
+
+# Build artifacts
+dist/
+*.tsbuildinfo
+
+# Dependencies
+node_modules/
+
+# Trigger.dev local state
+.trigger/
+
+# OS artifacts
+.DS_Store
+Thumbs.db

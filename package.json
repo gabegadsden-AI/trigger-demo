@@ -1,0 +1,17 @@
+{
+  "name": "trigger-demo",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "npx trigger.dev@latest dev",
+    "deploy": "npx trigger.dev@latest deploy",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@trigger.dev/sdk": "4.4.4"
+  },
+  "devDependencies": {
+    "typescript": "^5.4.5"
+  }
+}

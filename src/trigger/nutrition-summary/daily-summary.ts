@@ -87,20 +87,18 @@ function formatMacros(macros: MacroTargets): string {
   return `Protein: ${macros.proteinGrams}g | Carbs: ${macros.carbsGrams}g | Fat: ${macros.fatGrams}g`;
 }
 
-function formatPlan(plan: NutritionPlan, index: number): string {
+function logPlan(plan: NutritionPlan, index: number): void {
   const divider = "─".repeat(60);
-  const lines: string[] = [
-    divider,
-    `[${index + 1}] ${plan.name.toUpperCase()}`,
-    divider,
-    `About:    ${plan.description}`,
-    `Calories: ${plan.dailyCalorieTarget} kcal/day`,
-    `Macros:   ${formatMacros(plan.macros)}`,
-    ``,
-    `Sample Meals:`,
-    ...plan.sampleMeals.map((meal) => `  • ${meal}`),
-  ];
-  return lines.join("\n");
+  console.log(divider);
+  console.log(`[${index + 1}] ${plan.name.toUpperCase()}`);
+  console.log(divider);
+  console.log(`About:    ${plan.description}`);
+  console.log(`Calories: ${plan.dailyCalorieTarget} kcal/day`);
+  console.log(`Macros:   ${formatMacros(plan.macros)}`);
+  console.log(`Sample Meals:`);
+  for (const meal of plan.sampleMeals) {
+    console.log(`  • ${meal}`);
+  }
 }
 
 // ─── Scheduled Task ───────────────────────────────────────────────────────────
@@ -119,7 +117,7 @@ export const dailyNutritionSummary = schedules.task({
     console.log(`Plans loaded: ${NUTRITION_PLANS.length}\n`);
 
     for (let i = 0; i < NUTRITION_PLANS.length; i++) {
-      console.log(formatPlan(NUTRITION_PLANS[i], i));
+      logPlan(NUTRITION_PLANS[i], i);
       console.log();
     }
 
